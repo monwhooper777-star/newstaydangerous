@@ -284,9 +284,7 @@ export default function Home() {
 
             {/* HERO TITLE – Dx Gotha */}
             <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
-              <span className="text-balance">
-                Stay Dangerous
-              </span>
+              <span className="text-balance">Stay Dangerous</span>
             </h1>
 
             {/* HERO SUBCOPY – MWSD HOLISTIC HYDRATION */}
@@ -298,13 +296,6 @@ export default function Home() {
             </p>
 
             <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-              <MagneticButton
-                size="lg"
-                variant="primary"
-                onClick={() => window.open("https://v0.app/templates/R3n0gnvYFbO", "_blank")}
-              >
-                Open in v0
-              </MagneticButton>
               <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection(2)}>
                 View Demo
               </MagneticButton>
