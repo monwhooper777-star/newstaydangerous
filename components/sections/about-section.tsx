@@ -36,11 +36,10 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                We're a collective of designers, developers, and creative technologists obsessed with crafting
-                exceptional digital experiences.
+              Monwhooper1776 - Stay Dangerous is a personal brand created by Kenneth Castenada. 
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                Every project is an opportunity to explore new possibilities and push creative boundaries.
+              If you are here then you are well aware the core and central offer being put front and centre is electrolyzed reduced water provided by Kangen Water®
               </p>
             </div>
           </div>
