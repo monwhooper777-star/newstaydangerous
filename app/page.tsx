@@ -183,39 +183,38 @@ export default function Home() {
         style={{ contain: "strict" }}
       >
         <Shader className="h-full w-full">
-  {/* RED / BLACK SWIRL BASE */}
-  <Swirl
-    colorA="#000000"   // deep black
-    colorB="#8b0000"   // dark blood red
-    speed={0.65}
-    detail={0.9}
-    blend={55}
-    coarseX={35}
-    coarseY={35}
-    mediumX={40}
-    mediumY={40}
-    fineX={45}
-    fineY={45}
-  />
+          {/* RED / BLACK SWIRL BASE */}
+          <Swirl
+            colorA="#000000" // deep black
+            colorB="#8b0000" // dark blood red
+            speed={0.65}
+            detail={0.9}
+            blend={55}
+            coarseX={35}
+            coarseY={35}
+            mediumX={40}
+            mediumY={40}
+            fineX={45}
+            fineY={45}
+          />
 
-  {/* CHROMA FLOW FOR WHITE FLASHES + RED MOVEMENT */}
-  <ChromaFlow
-    baseColor="#0a0a0a"       // base black
-    upColor="#ffffff"         // white highlight flickers
-    downColor="#8b0000"       // red drag
-    leftColor="#ff1a1a"       // bright red accents
-    rightColor="#ff1a1a"
-    intensity={1.1}           // punchy
-    radius={2.0}
-    momentum={32}
-    maskType="alpha"
-    opacity={0.92}
-  />
-</Shader>
+          {/* CHROMA FLOW FOR WHITE FLASHES + RED MOVEMENT */}
+          <ChromaFlow
+            baseColor="#0a0a0a" // base black
+            upColor="#ffffff" // white highlight flickers
+            downColor="#8b0000" // red drag
+            leftColor="#ff1a1a" // bright red accents
+            rightColor="#ff1a1a"
+            intensity={1.1} // punchy
+            radius={2.0}
+            momentum={32}
+            maskType="alpha"
+            opacity={0.92}
+          />
+        </Shader>
 
-{/* Optional overlay tint */}
-<div className="absolute inset-0 bg-black/30" />
-
+        {/* Optional overlay tint */}
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       <nav
@@ -271,19 +270,24 @@ export default function Home() {
             <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
               <p className="font-mono text-xs text-foreground/90">WebGL Powered Design</p>
             </div>
-            <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
+
+            {/* HERO TITLE – Dx Gotha */}
+            <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
               <span className="text-balance">
                 Monwhooper 1776
                 <br />
                 Stay Dangerous
               </span>
             </h1>
+
+            {/* HERO SUBCOPY – MWSD HOLISTIC HYDRATION */}
             <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
               <span className="text-pretty">
-                Transforming digital spaces with dynamic shader effects and real-time visual experiences that captivate
-                and inspire.
+                Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the body,
+                fortifies the mind, and amplifies human potential.
               </span>
             </p>
+
             <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
               <MagneticButton
                 size="lg"
