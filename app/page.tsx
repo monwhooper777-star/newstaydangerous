@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+
 import { Shader, ChromaFlow, Swirl } from "shaders/react"
 import { CustomCursor } from "@/components/custom-cursor"
 import { GrainOverlay } from "@/components/grain-overlay"
@@ -226,9 +228,18 @@ export default function Home() {
           onClick={() => scrollToSection(0)}
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-foreground/25">
-            <span className="font-sans text-xl font-bold text-foreground">M</span>
+          {/* Wolf logo in nav */}
+          <div className="h-10 w-10 overflow-hidden rounded-lg transition-all duration-300 hover:scale-110">
+            <Image
+              src="/MWSDlogo.png"
+              alt="MWSD Logo"
+              width={40}
+              height={40}
+              className="object-cover"
+              priority
+            />
           </div>
+
           <span className="font-sans text-xl font-semibold tracking-tight text-foreground">MWSD</span>
         </button>
 
