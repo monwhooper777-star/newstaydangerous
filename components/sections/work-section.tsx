@@ -17,7 +17,7 @@ export function WorkSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Featured
+            Features
           </h2>
           <p className="font-mono text-sm text-foreground/60 md:text-base">/ Recent explorations</p>
         </div>
@@ -26,22 +26,25 @@ export function WorkSection() {
           {[
             {
               number: "01",
-              title: "Kinetic Typography",
-              category: "Interactive Experience",
+              title: "Supersaturated with Molecular Hydrogen (H₂)",
+              category:
+                "H₂-enriched water – redox biology & gasotransmitter literature (H₂ studies 2007–2022).",
               year: "2024",
               direction: "left",
             },
             {
               number: "02",
-              title: "Generative Patterns",
-              category: "Visual System",
+              title: "Partially Depleted of Deuterium",
+              category:
+                "Low-deuterium drinking water – metabolic and DDW reports (deuterium-depletion studies 1990–2022).",
               year: "2024",
               direction: "right",
             },
             {
               number: "03",
-              title: "Spatial Interface",
-              category: "3D Navigation",
+              title: "100+ Uses of Electrolyzed Water",
+              category:
+                "Hypochlorous acid (HOCl) & sodium hydroxide (NaOH) applications – cleaning, sanitising, & surface care (electrolyzed-water use cases 2000–2023).",
               year: "2023",
               direction: "left",
             },
@@ -67,7 +70,7 @@ function ProjectCard({
     if (!isVisible) {
       return project.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
     }
-    return "translate-x-0 opacity-100"
+  return "translate-x-0 opacity-100"
   }
 
   return (
