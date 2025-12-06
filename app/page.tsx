@@ -267,7 +267,7 @@ export default function Home() {
             </div>
             <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
               <span className="text-balance">
-                Monwhooper1776
+                Monwhooper 1776
                 <br />
                 Stay Dangerous
               </span>
