@@ -285,7 +285,7 @@ export default function Home() {
 
         <MagneticButton
           variant="secondary"
-          onClick={() => scrollToSection(3)} // Product Demo button → Demo section
+          onClick={() => scrollToSection(3)}
           className="px-4 py-1 text-xs md:px-6 md:py-2 md:text-sm"
         >
           Product Demo.
@@ -322,7 +322,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* HERO TITLE */}
+            {/* HERO */}
             <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-4xl font-light leading-tight tracking-tight text-foreground duration-1000 sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1] lg:text-8xl">
               <span className="text-balance">Stay Dangerous</span>
             </h1>
@@ -340,7 +340,7 @@ export default function Home() {
                 size="lg"
                 variant="secondary"
                 className="w-full text-sm sm:w-auto md:text-base"
-                onClick={() => scrollToSection(3)} // View Demo → Demo section
+                onClick={() => scrollToSection(3)}
               >
                 View Demo
               </MagneticButton>
@@ -349,7 +349,9 @@ export default function Home() {
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500 md:bottom-8">
             <div className="flex items-center gap-2">
-              <p className="font-mono text-[10px] text-foreground/80 md:text-xs">Scroll to explore</p>
+              <p className="font-mono text-[10px] text-foreground/80 md:text-xs">
+                Scroll to explore
+              </p>
               <div className="flex h-5 w-10 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md md:h-6 md:w-12">
                 <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-foreground/80 md:h-2 md:w-2" />
               </div>
@@ -365,7 +367,7 @@ export default function Home() {
         <ContactSection />
       </div>
 
-      {/* Hide scrollbars globally for divs */}
+      {/* Hide scrollbars globally */}
       <style jsx global>{`
         div::-webkit-scrollbar {
           display: none;
