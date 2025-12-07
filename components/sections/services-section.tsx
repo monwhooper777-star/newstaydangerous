@@ -17,31 +17,37 @@ export function ServicesSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Capabilities
+            Features Continued
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ What we bring to the table</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">
+            / Technical architecture of the water
+          </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
           {[
             {
-              title: "Creative Development",
-              description: "Pushing the boundaries of what's possible on the web",
+              title: "High Negative ORP (Redox Potential)",
+              description:
+                "Antioxidant capable water with ORP values reaching approximately −400 to −800 mV, associated with modulation of oxidative stress and redox homeostasis (redox studies 2010–2023).",
               direction: "top",
             },
             {
-              title: "Visual Design",
-              description: "Crafting memorable experiences through thoughtful aesthetics",
+              title: "Micro-Clustered Hydration Efficiency",
+              description:
+                "Reduced apparent cluster size and altered water structuring linked to faster absorption and cellular level hydration dynamics (hydration morphology reports 2004–2021).",
               direction: "right",
             },
             {
-              title: "Motion & Animation",
-              description: "Bringing interfaces to life with purposeful movement",
+              title: "Electrochemical Activation (ECA Technology)",
+              description:
+                "Anodic and cathodic separation processes that generate distinct functional waters with unique physicochemical signatures (ECA mechanism literature 1991–2020).",
               direction: "left",
             },
             {
-              title: "Technical Strategy",
-              description: "Building scalable solutions that perform beautifully",
+              title: "Platinum-Coated Titanium Electrode Cell",
+              description:
+                "Durable catalytic plates engineered for stable electrolysis, consistent hydrogen generation, and long term performance (electrode materials research 1998–2022).",
               direction: "bottom",
             },
           ].map((service, i) => (
@@ -91,8 +97,12 @@ function ServiceCard({
         <div className="h-px w-8 bg-foreground/30 transition-all duration-300 group-hover:w-12 group-hover:bg-foreground/50" />
         <span className="font-mono text-xs text-foreground/60">0{index + 1}</span>
       </div>
-      <h3 className="mb-2 font-sans text-2xl font-light text-foreground md:text-3xl">{service.title}</h3>
-      <p className="max-w-sm text-sm leading-relaxed text-foreground/80 md:text-base">{service.description}</p>
+      <h3 className="mb-2 font-sans text-2xl font-light text-foreground md:text-3xl">
+        {service.title}
+      </h3>
+      <p className="max-w-sm text-sm leading-relaxed text-foreground/80 md:text-base">
+        {service.description}
+      </p>
     </div>
   )
 }
