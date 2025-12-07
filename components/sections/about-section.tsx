@@ -47,9 +47,9 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           {/* Right side - Stats with creative layout */}
           <div className="flex flex-col justify-center space-y-6 md:space-y-12">
             {[
-              { value: "3000+", label: "Followers", sublabel: "on Instagram", direction: "right" },
-              { value: "8", label: "Years", sublabel: "Of innovation", direction: "left" },
-              { value: "12", label: "Awards", sublabel: "Industry recognition", direction: "right" },
+              { value: "23+", label: "Countries", sublabel: "Enagic® has presence in", direction: "right" },
+              { value: "51", label: "Years", sublabel: "in Business", direction: "left" },
+              { value: "9", label: "Certifications", sublabel: "Quality Assurance", direction: "right" },
             ].map((stat, i) => {
               const getRevealClass = () => {
                 if (!isVisible) {
