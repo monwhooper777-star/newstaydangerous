@@ -35,14 +35,14 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
           />
         </div>
 
-        {/* MOBILE / TABLET — simple vertical layout */}
-        <div className="mt-8 flex flex-col gap-3 md:hidden">
+        {/* MOBILE — pills that echo desktop styling but wrap nicely */}
+        <div className="mt-8 flex flex-wrap gap-3 md:hidden">
           <MagneticButton
             size="lg"
             variant="secondary"
             onClick={() => scrollToSection?.(5)} // Contact section index
             className="
-              w-full rounded-full
+              rounded-full px-6 py-3
               border border-foreground/20 bg-foreground/10
               backdrop-blur-md text-sm text-foreground
               hover:bg-foreground/20 transition
@@ -51,29 +51,50 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
             Contact
           </MagneticButton>
 
-          <div className="rounded-2xl border border-white/20 bg-black/30 px-5 py-3 text-xs text-white/80 backdrop-blur-md">
-            <div className="text-sm font-semibold">ISO 9001</div>
-            <div className="text-[10px] leading-tight">
+          <div
+            className="
+              flex flex-col justify-center
+              rounded-full border border-white/25 bg-black/40
+              px-6 py-3 text-[11px] text-white/90
+              backdrop-blur-md
+            "
+          >
+            <span className="text-xs font-semibold">ISO 9001</span>
+            <span className="text-[10px] leading-tight text-white/70">
               Quality Management System
-            </div>
+            </span>
           </div>
 
-          <div className="rounded-2xl border border-white/20 bg-black/30 px-5 py-3 text-xs text-white/80 backdrop-blur-md">
-            <div className="text-sm font-semibold">ISO 14001</div>
-            <div className="text-[10px] leading-tight">
+          <div
+            className="
+              flex flex-col justify-center
+              rounded-full border border-white/25 bg-black/40
+              px-6 py-3 text-[11px] text-white/90
+              backdrop-blur-md
+            "
+          >
+            <span className="text-xs font-semibold">ISO 14001</span>
+            <span className="text-[10px] leading-tight text-white/70">
               Environmental Management System
-            </div>
+            </span>
           </div>
 
-          <div className="rounded-2xl border border-white/20 bg-black/30 px-5 py-3 text-xs text-white/80 backdrop-blur-md">
-            <div className="text-sm font-semibold">ISO 13485</div>
-            <div className="text-[10px] leading-tight">
+          <div
+            className="
+              flex flex-col justify-center
+              rounded-full border border-white/25 bg-black/40
+              px-6 py-3 text-[11px] text-white/90
+              backdrop-blur-md
+            "
+          >
+            <span className="text-xs font-semibold">ISO 13485</span>
+            <span className="text-[10px] leading-tight text-white/70">
               Medical Device Quality Management
-            </div>
+            </span>
           </div>
         </div>
 
-        {/* DESKTOP — single “Contact + ISO” strip, Hydrochem-style */}
+        {/* DESKTOP — unchanged “Contact + ISO” strip, Hydrochem-style */}
         <div
           className="
             mt-8 hidden md:inline-flex
