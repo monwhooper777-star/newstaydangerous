@@ -13,7 +13,7 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
       className="flex min-h-screen w-screen shrink-0 flex-col justify-center px-6 py-24 md:px-16"
     >
       <div className="max-w-5xl">
-        {/* HEADER — match 'Kenneth Castaneda' style (clean sans) */}
+        {/* HEADER */}
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground">
           Product Demo.
         </h2>
@@ -35,20 +35,90 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
           />
         </div>
 
-        {/* CTA BUTTON — behaves like clicking the Contact nav item */}
-        <MagneticButton
-          size="lg"
-          variant="secondary"
-          onClick={() => scrollToSection?.(5)} // 5 = Contact section index
+        {/* MOBILE / TABLET — simple vertical layout */}
+        <div className="mt-8 flex flex-col gap-3 md:hidden">
+          <MagneticButton
+            size="lg"
+            variant="secondary"
+            onClick={() => scrollToSection?.(5)} // Contact section index
+            className="
+              w-full rounded-full
+              border border-foreground/20 bg-foreground/10
+              backdrop-blur-md text-sm text-foreground
+              hover:bg-foreground/20 transition
+            "
+          >
+            Contact
+          </MagneticButton>
+
+          <div className="rounded-2xl border border-white/20 bg-black/30 px-5 py-3 text-xs text-white/80 backdrop-blur-md">
+            <div className="text-sm font-semibold">ISO 9001</div>
+            <div className="text-[10px] leading-tight">
+              Quality Management System
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-white/20 bg-black/30 px-5 py-3 text-xs text-white/80 backdrop-blur-md">
+            <div className="text-sm font-semibold">ISO 14001</div>
+            <div className="text-[10px] leading-tight">
+              Environmental Management System
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-white/20 bg-black/30 px-5 py-3 text-xs text-white/80 backdrop-blur-md">
+            <div className="text-sm font-semibold">ISO 13485</div>
+            <div className="text-[10px] leading-tight">
+              Medical Device Quality Management
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP — single “Contact + ISO” strip, Hydrochem-style */}
+        <div
           className="
-            mt-8 px-8 py-3 rounded-full
-            border border-foreground/20 bg-foreground/10
-            backdrop-blur-md text-sm md:text-base text-foreground
-            hover:bg-foreground/20 transition
+            mt-8 hidden md:inline-flex
+            overflow-hidden rounded-full border border-white/25
+            bg-black/35 text-white/90 shadow-xl backdrop-blur-md
           "
         >
-          Contact
-        </MagneticButton>
+          {/* Contact segment */}
+          <MagneticButton
+            size="lg"
+            variant="ghost"
+            onClick={() => scrollToSection?.(5)}
+            className="
+              rounded-none px-10 py-4 text-sm md:text-base font-medium
+              bg-white/5 hover:bg-white/10
+              border-r border-white/25
+            "
+          >
+            Contact
+          </MagneticButton>
+
+          {/* ISO 9001 */}
+          <div className="flex flex-col justify-center px-8 py-3 border-r border-white/25 text-xs">
+            <span className="text-sm font-semibold">ISO 9001</span>
+            <span className="mt-1 text-[10px] leading-tight text-white/70">
+              Quality Management System
+            </span>
+          </div>
+
+          {/* ISO 14001 */}
+          <div className="flex flex-col justify-center px-8 py-3 border-r border-white/25 text-xs">
+            <span className="text-sm font-semibold">ISO 14001</span>
+            <span className="mt-1 text-[10px] leading-tight text-white/70">
+              Environmental Management System
+            </span>
+          </div>
+
+          {/* ISO 13485 */}
+          <div className="flex flex-col justify-center px-8 py-3 text-xs">
+            <span className="text-sm font-semibold">ISO 13485</span>
+            <span className="mt-1 text-[10px] leading-tight text-white/70">
+              Medical Device Quality Management
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );
