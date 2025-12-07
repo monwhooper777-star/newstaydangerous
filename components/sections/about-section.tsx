@@ -39,7 +39,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               Monwhooper1776 - Stay Dangerous is a personal brand created by Kenneth Castenada. 
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-              If you are here then you are well aware the core and central offer being put front and centre is electrolyzed reduced water provided by Kangen Water®
+              If you are here then you are well aware that the core and central offer being put front and centre is electrolyzed reduced water provided by Kangen Water® Machines that are engineed by a company called Enagic® of which Kenneth is a Product Distributor for. 
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           {/* Right side - Stats with creative layout */}
           <div className="flex flex-col justify-center space-y-6 md:space-y-12">
             {[
-              { value: "150+", label: "Projects", sublabel: "Delivered worldwide", direction: "right" },
+              { value: "3000+", label: "Followes", sublabel: "on Instagram", direction: "right" },
               { value: "8", label: "Years", sublabel: "Of innovation", direction: "left" },
               { value: "12", label: "Awards", sublabel: "Industry recognition", direction: "right" },
             ].map((stat, i) => {
