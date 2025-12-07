@@ -36,7 +36,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-              Monwhooper1776 - Stay Dangerous is a personal brand created by Kenneth Castenada. 
+              Monwhooper1776 - Stay Dangerous is a personal brand created by Kenneth Castenada, the maxim "Stay Dangerous" encapsulates a philosophy that includes, in large part,. an addressing of health and the significance of how good health can aid us in conducting ourselves in as competent a manner possible which in turn makes you "dangerous".
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
               If you are here then you are well aware that the core and central offer being put front and centre is electrolyzed reduced water provided by Kangen Water® Machines that are engineed by a company called Enagic® of which Kenneth is a Product Distributor for. 
