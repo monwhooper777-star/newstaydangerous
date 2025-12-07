@@ -96,7 +96,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           style={{ transitionDelay: "750ms" }}
         >
           <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(4)}>
-            Start a Project
+            View Product Demo.
           </MagneticButton>
         </div>
 
