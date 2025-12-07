@@ -16,6 +16,7 @@ export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
   const touchStartY = useRef(0)
   const touchStartX = useRef(0)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
@@ -242,9 +243,9 @@ export default function Home() {
             />
           </div>
 
-        <span className="font-sans text-lg font-semibold tracking-tight text-foreground md:text-xl">
-          MWSD
-        </span>
+          <span className="font-sans text-lg font-semibold tracking-tight text-foreground md:text-xl">
+            MWSD
+          </span>
         </button>
 
         <div className="hidden items-center gap-6 md:flex md:gap-8">
@@ -284,68 +285,103 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {/* Hero Section */}
-<section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-4 pb-14 pt-24 md:px-12 md:pb-24">
-  <div className="max-w-3xl">
-    {/* JAPANESE TYPE + PILL */}
-    <div className="mb-3 flex flex-col items-start gap-1 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      {/* Japanese text above pill */}
-      <Image
-        src="/japtype.png"
-        alt="Electrolyzed Water - Japanese"
-        width={90}        // adjust for size
-        height={24}
-        priority
-        className="object-contain opacity-95 md:w-[110px]"
-      />
+        <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-4 pb-14 pt-24 md:px-12 md:pb-24">
+          <div className="max-w-3xl">
+            {/* JAPANESE TYPE + PILL */}
+            <div className="mb-3 flex flex-col items-start gap-1 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              {/* Japanese text above pill */}
+              <Image
+                src="/japtype.png"
+                alt="Electrolyzed Water - Japanese"
+                width={90}
+                height={24}
+                priority
+                className="object-contain opacity-95 md:w-[110px]"
+              />
 
-      {/* Original pill */}
-      <div className="inline-block rounded-full border border-foreground/20 bg-foreground/15 px-3 py-1 backdrop-blur-md">
-        <p className="font-mono text-[10px] text-foreground/90 md:text-xs">
-          Electrolyzed Water Technology
-        </p>
-      </div>
-    </div>
+              {/* Original pill */}
+              <div className="inline-block rounded-full border border-foreground/20 bg-foreground/15 px-3 py-1 backdrop-blur-md">
+                <p className="font-mono text-[10px] text-foreground/90 md:text-xs">
+                  Electrolyzed Water Technology
+                </p>
+              </div>
+            </div>
 
-    {/* HERO TITLE – Dx Gotha */}
-    <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-4xl font-light leading-tight tracking-tight text-foreground duration-1000 sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1] lg:text-8xl">
-      <span className="text-balance">Stay Dangerous</span>
-    </h1>
+            {/* HERO TITLE – Dx Gotha */}
+            <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-4xl font-light leading-tight tracking-tight text-foreground duration-1000 sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1] lg:text-8xl">
+              <span className="text-balance">Stay Dangerous</span>
+            </h1>
 
-    {/* HERO SUBCOPY */}
-    <p className="mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/90 duration-1000 delay-200 md:mb-8 md:text-xl">
-      <span className="text-pretty">
-        Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the body,
-        fortifies the mind, and amplifies human potential.
-      </span>
-    </p>
+            {/* HERO SUBCOPY */}
+            <p className="mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/90 duration-1000 delay-200 md:mb-8 md:text-xl">
+              <span className="text-pretty">
+                Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the
+                body, fortifies the mind, and amplifies human potential.
+              </span>
+            </p>
 
-    <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:flex-row sm:items-center">
-      <MagneticButton
-        size="lg"
-        variant="secondary"
-        className="w-full text-sm sm:w-auto md:text-base"
-        onClick={() => scrollToSection(2)}
-      >
-        View Demo
-      </MagneticButton>
-    </div>
-  </div>
+            <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:flex-row sm:items-center">
+              <MagneticButton
+                size="lg"
+                variant="secondary"
+                className="w-full text-sm sm:w-auto md:text-base"
+                onClick={() => setIsDemoOpen(true)}
+              >
+                View Demo
+              </MagneticButton>
+            </div>
+          </div>
 
-  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500 md:bottom-8">
-    <div className="flex items-center gap-2">
-      <p className="font-mono text-[10px] text-foreground/80 md:text-xs">Scroll to explore</p>
-      <div className="flex h-5 w-10 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md md:h-6 md:w-12">
-        <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-foreground/80 md:h-2 md:w-2" />
-      </div>
-    </div>
-  </div>
-</section>
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500 md:bottom-8">
+            <div className="flex items-center gap-2">
+              <p className="font-mono text-[10px] text-foreground/80 md:text-xs">Scroll to explore</p>
+              <div className="flex h-5 w-10 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md md:h-6 md:w-12">
+                <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-foreground/80 md:h-2 md:w-2" />
+              </div>
+            </div>
+          </div>
+        </section>
 
         <WorkSection />
         <ServicesSection />
         <AboutSection scrollToSection={scrollToSection} />
         <ContactSection />
       </div>
+
+      {/* DEMO POPUP */}
+      {isDemoOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-background/95 p-6 shadow-2xl">
+            <button
+              onClick={() => setIsDemoOpen(false)}
+              className="absolute right-4 top-4 text-xs font-medium uppercase tracking-wide text-foreground/60 hover:text-foreground"
+            >
+              Close
+            </button>
+
+            <h2 className="mb-3 text-lg font-semibold tracking-tight text-foreground md:text-2xl">
+              MWSD Product Demo
+            </h2>
+
+            <p className="mb-4 text-sm leading-relaxed text-foreground/80 md:text-base">
+              This is where you can showcase the core experience: a walkthrough of the hydration protocol,
+              device setup, or any cinematic sequence that communicates what &quot;Stay Dangerous&quot; feels like in
+              practice.
+            </p>
+
+            <div className="aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/60">
+              {/* Replace this with your actual embed */}
+              {/* Example:
+              <iframe
+                src="https://www.youtube.com/embed/your_video_id"
+                className="h-full w-full"
+                allowFullScreen
+              />
+              */}
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx global>{`
         div::-webkit-scrollbar {
