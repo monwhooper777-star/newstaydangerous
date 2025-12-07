@@ -104,13 +104,18 @@ export function ContactSection() {
 
               <div className="flex flex-col">
                 <a
-                  href="#"
+                  href="https://x.com/MonWhooperA1776"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
                 >
                   Twitter
                 </a>
+
                 <a
-                  href="#"
+                  href="https://www.instagram.com/monwhooper_amazing1776/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
                 >
                   Instagram
@@ -122,7 +127,6 @@ export function ContactSection() {
           {/* RIGHT SIDE – FORM */}
           <div className="flex flex-col justify-center">
             <form onSubmit={handleSubmit} className="space-y-6">
-              
               {/* NAME */}
               <div
                 className={`transition-all duration-700 ${
