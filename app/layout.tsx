@@ -8,9 +8,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Shaders Landing Page",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "Monwhooper 1776 - Stay Dangerous site",
+  description: "Created by Areculateir℠",
+  generator: "ACLR77",
 }
 
 export default function RootLayout({
