@@ -80,7 +80,7 @@ export function ContactSection() {
                   <MapPin className="h-3 w-3 text-foreground/60" />
                   <span className="font-mono text-xs text-foreground/60">Location</span>
                 </div>
-                <p className="text-base text-foreground md:text-2xl">New York, NY</p>
+                <p className="text-base text-foreground md:text-2xl">Los Angeles, CA</p>
               </div>
 
               <div
