@@ -1,27 +1,34 @@
 "use client"
 
+import Image from "next/image"
 import { Mail, MapPin } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
 import { useState, type FormEvent } from "react"
 import { MagneticButton } from "@/components/magnetic-button"
-import Image from "next/image"
 
 export function ContactSection() {
   const { ref, isVisible } = useReveal(0.3)
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  })
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (!formData.name || !formData.email || !formData.message) return
+    if (!formData.name || !formData.email) return
 
     setIsSubmitting(true)
+
     await new Promise((resolve) => setTimeout(resolve, 1500))
+
     setIsSubmitting(false)
     setSubmitSuccess(true)
-    setFormData({ name: "", email: "", message: "" })
+    setFormData({ name: "", email: "" })
 
     setTimeout(() => setSubmitSuccess(false), 5000)
   }
@@ -35,146 +42,137 @@ export function ContactSection() {
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:gap-16 lg:gap-24">
           {/* LEFT SIDE */}
           <div className="flex flex-col justify-center">
+            {/* Heading */}
             <div
               className={`mb-6 transition-all duration-700 md:mb-12 ${
                 isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
               }`}
             >
               <h2 className="mb-2 font-sans text-4xl font-light leading-[1.05] tracking-tight text-foreground md:mb-3 md:text-7xl lg:text-8xl">
-                <br />
                 talk
               </h2>
               <p className="font-mono text-xs text-foreground/60 md:text-base">/ Get in touch</p>
             </div>
 
-            <div className="space-y-4 md:space-y-8">
-              {/* EMAIL */}
-              <a
-                href="mailto:water@staydangerous.com"
-                className={`group block transition-all duration-700 ${
-                  isVisible ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
-                }`}
-                style={{ transitionDelay: "200ms" }}
-              >
-                <div className="mb-1 flex items-center gap-2">
-                  <Mail className="h-3 w-3 text-foreground/60" />
-                  <span className="font-mono text-xs text-foreground/60">Email</span>
-                </div>
-                <p className="text-base text-foreground transition-colors group-hover:text-foreground/70 md:text-2xl">
-                  water@staydangerous.com
-                </p>
-              </a>
-
-              {/* LOCATION */}
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-                }`}
-                style={{ transitionDelay: "350ms" }}
-              >
-                <div className="mb-1 flex items-center gap-2">
-                  <MapPin className="h-3 w-3 text-foreground/60" />
-                  <span className="font-mono text-xs text-foreground/60">Location</span>
-                </div>
-                <p className="text-base text-foreground md:text-2xl">Los Angeles, CA</p>
+            {/* Email */}
+            <a
+              href="mailto:water@staydangerous.com"
+              className={`group block transition-all duration-700 ${
+                isVisible ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <div className="mb-1 flex items-center gap-2">
+                <Mail className="h-3 w-3 text-foreground/60" />
+                <span className="font-mono text-xs text-foreground/60">Email</span>
               </div>
+              <p className="text-base text-foreground transition-colors group-hover:text-foreground/70 md:text-2xl">
+                water@staydangerous.com
+              </p>
+            </a>
 
-              {/* IMAGE + SOCIALS */}
-              <div
-                className={`flex items-center gap-4 pt-4 transition-all duration-700 ${
-                  isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-                }`}
-                style={{ transitionDelay: "500ms" }}
-              >
-                {/* Your Image */}
-                <div className="h-14 w-14 overflow-hidden rounded-full md:h-20 md:w-20">
-                  <Image
-                    src="/MWDP.png"
-                    alt="MWSD Avatar"
-                    width={80}
-                    height={80}
-                    className="object-cover"
-                    priority
-                  />
-                </div>
+            {/* Location */}
+            <div
+              className={`transition-all duration-700 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+              }`}
+              style={{ transitionDelay: "350ms" }}
+            >
+              <div className="mb-1 flex items-center gap-2">
+                <MapPin className="h-3 w-3 text-foreground/60" />
+                <span className="font-mono text-xs text-foreground/60">Location</span>
+              </div>
+              <p className="text-base text-foreground md:text-2xl">Los Angeles, CA</p>
+            </div>
 
-                {/* Social Links */}
-                <div className="flex flex-col gap-1">
-                  {["Twitter", "Instagram"].map((social) => (
-                    <a
-                      key={social}
-                      href="#"
-                      className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
-                    >
-                      {social}
-                    </a>
-                  ))}
-                </div>
+            {/* Socials + Avatar */}
+            <div
+              className={`flex items-center gap-4 pt-4 transition-all duration-700 ${
+                isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+              }`}
+              style={{ transitionDelay: "500ms" }}
+            >
+              <Image
+                src="/MWDP.png"
+                alt="MWSD Profile"
+                width={52}
+                height={52}
+                className="rounded-full"
+              />
+
+              <div className="flex flex-col">
+                <a
+                  href="#"
+                  className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
+                >
+                  Twitter
+                </a>
+                <a
+                  href="#"
+                  className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
+                >
+                  Instagram
+                </a>
               </div>
             </div>
           </div>
 
-          {/* RIGHT SIDE FORM */}
+          {/* RIGHT SIDE – FORM */}
           <div className="flex flex-col justify-center">
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              
+              {/* NAME */}
               <div
                 className={`transition-all duration-700 ${
                   isVisible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"
                 }`}
                 style={{ transitionDelay: "200ms" }}
               >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">Name</label>
+                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
+                  Name<span className="text-red-500 pl-1">*</span>
+                </label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
                   placeholder="Your name"
+                  className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
                 />
               </div>
 
+              {/* EMAIL */}
               <div
                 className={`transition-all duration-700 ${
                   isVisible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"
                 }`}
                 style={{ transitionDelay: "350ms" }}
               >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">Email</label>
+                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
+                  Email<span className="text-red-500 pl-1">*</span>
+                </label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
                   placeholder="your@email.com"
-                />
-              </div>
-
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"
-                }`}
-                style={{ transitionDelay: "500ms" }}
-              >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">Message</label>
-                <textarea
-                  rows={3}
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
-                  placeholder="Tell us about your project..."
                 />
               </div>
 
+              {/* SUBMIT */}
               <div
                 className={`transition-all duration-700 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
-                style={{ transitionDelay: "650ms" }}
+                style={{ transitionDelay: "500ms" }}
               >
-                <MagneticButton variant="primary" size="lg" className="w-full">
+                <MagneticButton
+                  variant="primary"
+                  size="lg"
+                  className="w-full disabled:opacity-50"
+                >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </MagneticButton>
 
