@@ -244,7 +244,7 @@ export default function Home() {
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
-          {["Home", "Work", "Services", "About", "Contact"].map((item, index) => (
+          {["Home", "Features", "Feat. Cont.", "About", "Contact"].map((item, index) => (
             <button
               key={item}
               onClick={() => scrollToSection(index)}
