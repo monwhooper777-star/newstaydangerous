@@ -36,7 +36,9 @@ export function CustomCursor() {
 
       const target = e.target as HTMLElement
       isPointerRef.current =
-        window.getComputedStyle(target).cursor === "pointer" || target.tagName === "BUTTON" || target.tagName === "A"
+        window.getComputedStyle(target).cursor === "pointer" ||
+        target.tagName === "BUTTON" ||
+        target.tagName === "A"
     }
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true })
@@ -52,14 +54,16 @@ export function CustomCursor() {
     <>
       <div
         ref={outerRef}
-        className="pointer-events-none fixed left-0 top-0 z-50 mix-blend-difference will-change-transform"
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference will-change-transform"
         style={{ contain: "layout style paint" }}
       >
         <div className="h-4 w-4 rounded-full border-2 border-white" />
       </div>
       <div
         ref={innerRef}
-        className="pointer-events-none fixed left-0 top-0 z-50 mix-blend-difference will-change-transform"
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference will-change-transform"
         style={{ contain: "layout style paint" }}
       >
         <div className="h-2 w-2 rounded-full bg-white" />
