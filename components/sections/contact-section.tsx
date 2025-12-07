@@ -69,7 +69,7 @@ export function ContactSection() {
                 <span className="font-mono text-xs text-foreground/60">Email</span>
               </div>
               <p className="text-base text-foreground transition-colors group-hover:text-foreground/70 md:text-2xl">
-                water@monwehooper.com
+                water@monwhooper.com
               </p>
             </a>
 
