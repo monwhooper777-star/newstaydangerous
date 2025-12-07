@@ -51,7 +51,9 @@ export function ContactSection() {
               <h2 className="mb-2 font-sans text-4xl font-light leading-[1.05] tracking-tight text-foreground md:mb-3 md:text-7xl lg:text-8xl">
                 Contact Monwhooper
               </h2>
-              <p className="font-mono text-xs text-foreground/60 md:text-base">/ Get in touch with monwhooper to get your own Kangen Water® Machine</p>
+              <p className="font-mono text-xs text-foreground/60 md:text-base">
+                / Get in touch with monwhooper to get your own Kangen Water® Machine
+              </p>
             </div>
 
             {/* Email */}
@@ -173,7 +175,7 @@ export function ContactSection() {
                   size="lg"
                   className="w-full disabled:opacity-50"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? "Sending..." : "Upgrade Your Water"}
                 </MagneticButton>
 
                 {submitSuccess && (
