@@ -284,48 +284,62 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {/* Hero Section */}
-        <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-4 pb-14 pt-24 md:px-12 md:pb-24">
-          <div className="max-w-3xl">
-            <div className="mb-3 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-3 py-1 backdrop-blur-md duration-700">
-              <p className="font-mono text-[10px] text-foreground/90 md:text-xs">
-                Electrolyzed Water Technology
-              </p>
-            </div>
+<section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-4 pb-14 pt-24 md:px-12 md:pb-24">
+  <div className="max-w-3xl">
+    {/* JAPANESE TYPE + PILL */}
+    <div className="mb-3 flex flex-col items-start gap-1 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      {/* Japanese text above pill */}
+      <Image
+        src="/japtype.png"
+        alt="Electrolyzed Water - Japanese"
+        width={90}        // adjust for size
+        height={24}
+        priority
+        className="object-contain opacity-95 md:w-[110px]"
+      />
 
-            {/* HERO TITLE – Dx Gotha */}
-            <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-4xl font-light leading-tight tracking-tight text-foreground duration-1000 sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1] lg:text-8xl">
-              <span className="text-balance">Stay Dangerous</span>
-            </h1>
+      {/* Original pill */}
+      <div className="inline-block rounded-full border border-foreground/20 bg-foreground/15 px-3 py-1 backdrop-blur-md">
+        <p className="font-mono text-[10px] text-foreground/90 md:text-xs">
+          Electrolyzed Water Technology
+        </p>
+      </div>
+    </div>
 
-            {/* HERO SUBCOPY – MWSD HOLISTIC HYDRATION */}
-            <p className="mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/90 duration-1000 delay-200 md:mb-8 md:text-xl">
-              <span className="text-pretty">
-                Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the body,
-                fortifies the mind, and amplifies human potential.
-              </span>
-            </p>
+    {/* HERO TITLE – Dx Gotha */}
+    <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-4xl font-light leading-tight tracking-tight text-foreground duration-1000 sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1] lg:text-8xl">
+      <span className="text-balance">Stay Dangerous</span>
+    </h1>
 
-            <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:flex-row sm:items-center">
-              <MagneticButton
-                size="lg"
-                variant="secondary"
-                className="w-full text-sm sm:w-auto md:text-base"
-                onClick={() => scrollToSection(2)}
-              >
-                View Demo
-              </MagneticButton>
-            </div>
-          </div>
+    {/* HERO SUBCOPY */}
+    <p className="mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/90 duration-1000 delay-200 md:mb-8 md:text-xl">
+      <span className="text-pretty">
+        Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the body,
+        fortifies the mind, and amplifies human potential.
+      </span>
+    </p>
 
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500 md:bottom-8">
-            <div className="flex items-center gap-2">
-              <p className="font-mono text-[10px] text-foreground/80 md:text-xs">Scroll to explore</p>
-              <div className="flex h-5 w-10 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md md:h-6 md:w-12">
-                <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-foreground/80 md:h-2 md:w-2" />
-              </div>
-            </div>
-          </div>
-        </section>
+    <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:flex-row sm:items-center">
+      <MagneticButton
+        size="lg"
+        variant="secondary"
+        className="w-full text-sm sm:w-auto md:text-base"
+        onClick={() => scrollToSection(2)}
+      >
+        View Demo
+      </MagneticButton>
+    </div>
+  </div>
+
+  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500 md:bottom-8">
+    <div className="flex items-center gap-2">
+      <p className="font-mono text-[10px] text-foreground/80 md:text-xs">Scroll to explore</p>
+      <div className="flex h-5 w-10 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md md:h-6 md:w-12">
+        <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-foreground/80 md:h-2 md:w-2" />
+      </div>
+    </div>
+  </div>
+</section>
 
         <WorkSection />
         <ServicesSection />
