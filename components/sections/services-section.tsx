@@ -27,31 +27,35 @@ export function ServicesSection() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
           {[
             {
+              number: "03",
               title: "High Negative ORP (Redox Potential)",
               description:
-                "Antioxidant capable water with ORP values reaching approximately −400 to −800 mV, associated with modulation of oxidative stress and redox homeostasis (redox studies 2010–2023).",
+                "Antioxidant-capable water with ORP values reaching −400 to −800 mV (redox research 2010–2023).",
               direction: "top",
             },
             {
+              number: "04",
               title: "Micro-Clustered Hydration Efficiency",
               description:
-                "Reduced apparent cluster size and altered water structuring linked to faster absorption and cellular level hydration dynamics (hydration morphology reports 2004–2021).",
+                "Altered structuring associated with rapid absorption & hydration kinetics (water morphology studies 2004–2021).",
               direction: "right",
             },
             {
+              number: "05",
               title: "Electrochemical Activation (ECA Technology)",
               description:
-                "Anodic and cathodic separation processes that generate distinct functional waters with unique physicochemical signatures (ECA mechanism literature 1991–2020).",
+                "Anodic & cathodic separation producing function-specific waters (ECA science 1991–2020).",
               direction: "left",
             },
             {
+              number: "06",
               title: "Platinum-Coated Titanium Electrode Cell",
               description:
-                "Durable catalytic plates engineered for stable electrolysis, consistent hydrogen generation, and long term performance (electrode materials research 1998–2022).",
+                "Engineered for stable hydrogen generation & long-term catalytic efficiency (electrode materials research 1998–2022).",
               direction: "bottom",
             },
-          ].map((service, i) => (
-            <ServiceCard key={i} service={service} index={i} isVisible={isVisible} />
+          ].map((feature, i) => (
+            <ServiceCard key={i} service={feature} index={i} isVisible={isVisible} />
           ))}
         </div>
       </div>
@@ -64,7 +68,7 @@ function ServiceCard({
   index,
   isVisible,
 }: {
-  service: { title: string; description: string; direction: string }
+  service: { number?: string; title: string; description: string; direction: string }
   index: number
   isVisible: boolean
 }) {
@@ -89,18 +93,18 @@ function ServiceCard({
   return (
     <div
       className={`group transition-all duration-700 ${getRevealClass()}`}
-      style={{
-        transitionDelay: `${index * 150}ms`,
-      }}
+      style={{ transitionDelay: `${index * 150}ms` }}
     >
       <div className="mb-3 flex items-center gap-3">
         <div className="h-px w-8 bg-foreground/30 transition-all duration-300 group-hover:w-12 group-hover:bg-foreground/50" />
-        <span className="font-mono text-xs text-foreground/60">0{index + 1}</span>
+        <span className="font-mono text-xs text-foreground/60">{service.number}</span>
       </div>
-      <h3 className="mb-2 font-sans text-2xl font-light text-foreground md:text-3xl">
+
+      <h3 className="mb-2 font-sans text-xl font-light text-foreground md:text-2xl">
         {service.title}
       </h3>
-      <p className="max-w-sm text-sm leading-relaxed text-foreground/80 md:text-base">
+
+      <p className="max-w-sm text-xs leading-relaxed text-foreground/80 md:text-sm">
         {service.description}
       </p>
     </div>
