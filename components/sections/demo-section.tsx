@@ -35,11 +35,11 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
           />
         </div>
 
-        {/* TRUST STRIP — shared for desktop & mobile, width aligned with video */}
+        {/* TRUST STRIP — vertical stack on mobile, horizontal strip on desktop */}
         <div className="mt-8 w-full max-w-xl mx-auto">
           <div
             className="
-              flex flex-wrap items-stretch
+              flex flex-col md:flex-row
               overflow-hidden rounded-3xl border border-white/25
               bg-black/35 text-white/90 shadow-xl backdrop-blur-md
             "
@@ -53,7 +53,7 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
                 flex-shrink-0 rounded-none px-8 py-4
                 text-sm md:text-base font-medium
                 bg-white/5 hover:bg-white/10
-                border-r border-white/25
+                border-b border-white/25 md:border-b-0 md:border-r
               "
             >
               Contact
@@ -62,8 +62,9 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
             {/* ISO 9001 */}
             <div
               className="
-                flex min-w-[11rem] flex-1 flex-col justify-center
-                px-6 py-3 border-r border-white/25 text-xs
+                flex flex-1 flex-col justify-center
+                px-6 py-4 text-xs
+                border-t border-white/25 md:border-t-0 md:border-r
               "
             >
               <span className="text-sm font-semibold">ISO 9001</span>
@@ -75,8 +76,9 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
             {/* ISO 14001 */}
             <div
               className="
-                flex min-w-[11rem] flex-1 flex-col justify-center
-                px-6 py-3 border-r border-white/25 text-xs
+                flex flex-1 flex-col justify-center
+                px-6 py-4 text-xs
+                border-t border-white/25 md:border-t-0 md:border-r
               "
             >
               <span className="text-sm font-semibold">ISO 14001</span>
@@ -88,8 +90,9 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
             {/* ISO 13485 */}
             <div
               className="
-                flex min-w-[11rem] flex-1 flex-col justify-center
-                px-6 py-3 text-xs
+                flex flex-1 flex-col justify-center
+                px-6 py-4 text-xs
+                border-t border-white/25 md:border-t-0
               "
             >
               <span className="text-sm font-semibold">ISO 13485</span>
