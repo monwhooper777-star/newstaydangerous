@@ -4,6 +4,7 @@ import { Mail, MapPin } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
 import { useState, type FormEvent } from "react"
 import { MagneticButton } from "@/components/magnetic-button"
+import Image from "next/image"
 
 export function ContactSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -14,21 +15,14 @@ export function ContactSection() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      return
-    }
+    if (!formData.name || !formData.email || !formData.message) return
 
     setIsSubmitting(true)
-
-    // Simulate form submission (replace with actual API call later)
     await new Promise((resolve) => setTimeout(resolve, 1500))
-
     setIsSubmitting(false)
     setSubmitSuccess(true)
     setFormData({ name: "", email: "", message: "" })
 
-    // Reset success message after 5 seconds
     setTimeout(() => setSubmitSuccess(false), 5000)
   }
 
@@ -39,6 +33,7 @@ export function ContactSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:gap-16 lg:gap-24">
+          {/* LEFT SIDE */}
           <div className="flex flex-col justify-center">
             <div
               className={`mb-6 transition-all duration-700 md:mb-12 ${
@@ -46,7 +41,6 @@ export function ContactSection() {
               }`}
             >
               <h2 className="mb-2 font-sans text-4xl font-light leading-[1.05] tracking-tight text-foreground md:mb-3 md:text-7xl lg:text-8xl">
-                
                 <br />
                 talk
               </h2>
@@ -54,8 +48,9 @@ export function ContactSection() {
             </div>
 
             <div className="space-y-4 md:space-y-8">
+              {/* EMAIL */}
               <a
-                href="mailto:hello@studio.com"
+                href="mailto:water@staydangerous.com"
                 className={`group block transition-all duration-700 ${
                   isVisible ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
                 }`}
@@ -70,6 +65,7 @@ export function ContactSection() {
                 </p>
               </a>
 
+              {/* LOCATION */}
               <div
                 className={`transition-all duration-700 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
@@ -83,26 +79,42 @@ export function ContactSection() {
                 <p className="text-base text-foreground md:text-2xl">Los Angeles, CA</p>
               </div>
 
+              {/* IMAGE + SOCIALS */}
               <div
-                className={`flex gap-2 pt-2 transition-all duration-700 md:pt-4 ${
+                className={`flex items-center gap-4 pt-4 transition-all duration-700 ${
                   isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
                 }`}
                 style={{ transitionDelay: "500ms" }}
               >
-                {["Twitter", "Instagram"].map((social, i) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
-                  >
-                    {social}
-                  </a>
-                ))}
+                {/* Your Image */}
+                <div className="h-14 w-14 overflow-hidden rounded-full md:h-20 md:w-20">
+                  <Image
+                    src="/MWDP.png"
+                    alt="MWSD Avatar"
+                    width={80}
+                    height={80}
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+
+                {/* Social Links */}
+                <div className="flex flex-col gap-1">
+                  {["Twitter", "Instagram"].map((social) => (
+                    <a
+                      key={social}
+                      href="#"
+                      className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90"
+                    >
+                      {social}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right side - Minimal form */}
+          {/* RIGHT SIDE FORM */}
           <div className="flex flex-col justify-center">
             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div
@@ -114,9 +126,9 @@ export function ContactSection() {
                 <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">Name</label>
                 <input
                   type="text"
+                  required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
                   className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
                   placeholder="Your name"
                 />
@@ -131,9 +143,9 @@ export function ContactSection() {
                 <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">Email</label>
                 <input
                   type="email"
+                  required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
                   className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
                   placeholder="your@email.com"
                 />
@@ -148,9 +160,9 @@ export function ContactSection() {
                 <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">Message</label>
                 <textarea
                   rows={3}
+                  required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
                   className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
                   placeholder="Tell us about your project..."
                 />
@@ -162,16 +174,14 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "650ms" }}
               >
-                <MagneticButton
-                  variant="primary"
-                  size="lg"
-                  className="w-full disabled:opacity-50"
-                  onClick={isSubmitting ? undefined : undefined}
-                >
+                <MagneticButton variant="primary" size="lg" className="w-full">
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </MagneticButton>
+
                 {submitSuccess && (
-                  <p className="mt-3 text-center font-mono text-sm text-foreground/80">Message sent successfully!</p>
+                  <p className="mt-3 text-center font-mono text-sm text-foreground/80">
+                    Message sent successfully!
+                  </p>
                 )}
               </div>
             </form>
