@@ -10,7 +10,10 @@ import { WorkSection } from "@/components/sections/work-section"
 import { ServicesSection } from "@/components/sections/services-section"
 import { AboutSection } from "@/components/sections/about-section"
 import { ContactSection } from "@/components/sections/contact-section"
+import { DemoSection } from "@/components/sections/demo-section"
 import { MagneticButton } from "@/components/magnetic-button"
+
+const TOTAL_SECTIONS = 6 // 0..5 → Hero, Work, Services, Demo, About, Contact
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -53,14 +56,16 @@ export default function Home() {
   }, [])
 
   const scrollToSection = (index: number) => {
-    if (scrollContainerRef.current) {
-      const sectionWidth = scrollContainerRef.current.offsetWidth
-      scrollContainerRef.current.scrollTo({
-        left: sectionWidth * index,
-        behavior: "smooth",
-      })
-      setCurrentSection(index)
-    }
+    if (!scrollContainerRef.current) return
+
+    const clampedIndex = Math.max(0, Math.min(TOTAL_SECTIONS - 1, index))
+
+    const sectionWidth = scrollContainerRef.current.offsetWidth
+    scrollContainerRef.current.scrollTo({
+      left: sectionWidth * clampedIndex,
+      behavior: "smooth",
+    })
+    setCurrentSection(clampedIndex)
   }
 
   // Touch scroll (vertical swipes -> horizontal scroll)
@@ -83,7 +88,7 @@ export default function Home() {
       const deltaX = touchStartX.current - touchEndX
 
       if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
-        if (deltaY > 0 && currentSection < 4) {
+        if (deltaY > 0 && currentSection < TOTAL_SECTIONS - 1) {
           scrollToSection(currentSection + 1)
         } else if (deltaY < 0 && currentSection > 0) {
           scrollToSection(currentSection - 1)
@@ -155,7 +160,11 @@ export default function Home() {
         const scrollLeft = scrollContainerRef.current.scrollLeft
         const newSection = Math.round(scrollLeft / sectionWidth)
 
-        if (newSection !== currentSection && newSection >= 0 && newSection <= 4) {
+        if (
+          newSection !== currentSection &&
+          newSection >= 0 &&
+          newSection <= TOTAL_SECTIONS - 1
+        ) {
           setCurrentSection(newSection)
         }
 
@@ -177,6 +186,8 @@ export default function Home() {
       }
     }
   }, [currentSection])
+
+  const navItems = ["Home", "Features", "Feat. Cont.", "Demo.", "About", "Contact"]
 
   return (
     <main className="relative h-screen w-full overflow-hidden bg-background">
@@ -252,12 +263,14 @@ export default function Home() {
         </button>
 
         <div className="hidden items-center gap-6 md:flex md:gap-8">
-          {["Home", "Features", "Feat. Cont.", "About", "Contact"].map((item, index) => (
+          {navItems.map((item, index) => (
             <button
               key={item}
               onClick={() => scrollToSection(index)}
               className={`group relative font-sans text-xs font-medium transition-colors md:text-sm ${
-                currentSection === index ? "text-foreground" : "text-foreground/80 hover:text-foreground"
+                currentSection === index
+                  ? "text-foreground"
+                  : "text-foreground/80 hover:text-foreground"
               }`}
             >
               {item}
@@ -272,7 +285,7 @@ export default function Home() {
 
         <MagneticButton
           variant="secondary"
-          onClick={() => scrollToSection(4)}
+          onClick={() => scrollToSection(3)} // Product Demo button → Demo section
           className="px-4 py-1 text-xs md:px-6 md:py-2 md:text-sm"
         >
           Product Demo.
@@ -327,7 +340,7 @@ export default function Home() {
                 size="lg"
                 variant="secondary"
                 className="w-full text-sm sm:w-auto md:text-base"
-                onClick={() => scrollToSection(2)}
+                onClick={() => scrollToSection(3)} // View Demo → Demo section
               >
                 View Demo
               </MagneticButton>
@@ -347,6 +360,7 @@ export default function Home() {
         {/* OTHER SECTIONS */}
         <WorkSection />
         <ServicesSection />
+        <DemoSection />
         <AboutSection scrollToSection={scrollToSection} />
         <ContactSection />
       </div>
