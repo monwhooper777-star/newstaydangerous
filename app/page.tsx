@@ -181,7 +181,9 @@ export default function Home() {
 
       <div
         ref={shaderContainerRef}
-        className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        className={`fixed inset-0 z-0 transition-opacity duration-700 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
         style={{ contain: "strict" }}
       >
         <Shader className="h-full w-full">
@@ -220,7 +222,7 @@ export default function Home() {
       </div>
 
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-700 md:px-12 ${
+        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 transition-opacity duration-700 md:px-12 md:py-6 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -229,7 +231,7 @@ export default function Home() {
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
           {/* Wolf logo in nav */}
-          <div className="h-10 w-10 overflow-hidden rounded-lg transition-all duration-300 hover:scale-110">
+          <div className="h-9 w-9 overflow-hidden rounded-lg transition-all duration-300 hover:scale-110 md:h-10 md:w-10">
             <Image
               src="/MWSDlogo.png"
               alt="MWSD Logo"
@@ -240,15 +242,17 @@ export default function Home() {
             />
           </div>
 
-          <span className="font-sans text-xl font-semibold tracking-tight text-foreground">MWSD</span>
+        <span className="font-sans text-lg font-semibold tracking-tight text-foreground md:text-xl">
+          MWSD
+        </span>
         </button>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex md:gap-8">
           {["Home", "Features", "Feat. Cont.", "About", "Contact"].map((item, index) => (
             <button
               key={item}
               onClick={() => scrollToSection(index)}
-              className={`group relative font-sans text-sm font-medium transition-colors ${
+              className={`group relative font-sans text-xs font-medium transition-colors md:text-sm ${
                 currentSection === index ? "text-foreground" : "text-foreground/80 hover:text-foreground"
               }`}
             >
@@ -262,7 +266,11 @@ export default function Home() {
           ))}
         </div>
 
-        <MagneticButton variant="secondary" onClick={() => scrollToSection(4)}>
+        <MagneticButton
+          variant="secondary"
+          onClick={() => scrollToSection(4)}
+          className="px-4 py-1 text-xs md:px-6 md:py-2 md:text-sm"
+        >
           Get Started
         </MagneticButton>
       </nav>
@@ -276,37 +284,44 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {/* Hero Section */}
-        <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
+        <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-4 pb-14 pt-24 md:px-12 md:pb-24">
           <div className="max-w-3xl">
-            <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
-              <p className="font-mono text-xs text-foreground/90">Electrolyzed Water Technology</p>
+            <div className="mb-3 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-3 py-1 backdrop-blur-md duration-700">
+              <p className="font-mono text-[10px] text-foreground/90 md:text-xs">
+                Electrolyzed Water Technology
+              </p>
             </div>
 
             {/* HERO TITLE – Dx Gotha */}
-            <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
+            <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-4xl font-light leading-tight tracking-tight text-foreground duration-1000 sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1] lg:text-8xl">
               <span className="text-balance">Stay Dangerous</span>
             </h1>
 
             {/* HERO SUBCOPY – MWSD HOLISTIC HYDRATION */}
-            <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
+            <p className="mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/90 duration-1000 delay-200 md:mb-8 md:text-xl">
               <span className="text-pretty">
                 Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the body,
                 fortifies the mind, and amplifies human potential.
               </span>
             </p>
 
-            <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-              <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection(2)}>
+            <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:flex-row sm:items-center">
+              <MagneticButton
+                size="lg"
+                variant="secondary"
+                className="w-full text-sm sm:w-auto md:text-base"
+                onClick={() => scrollToSection(2)}
+              >
                 View Demo
               </MagneticButton>
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500 md:bottom-8">
             <div className="flex items-center gap-2">
-              <p className="font-mono text-xs text-foreground/80">Scroll to explore</p>
-              <div className="flex h-6 w-12 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md">
-                <div className="h-2 w-2 animate-pulse rounded-full bg-foreground/80" />
+              <p className="font-mono text-[10px] text-foreground/80 md:text-xs">Scroll to explore</p>
+              <div className="flex h-5 w-10 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md md:h-6 md:w-12">
+                <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-foreground/80 md:h-2 md:w-2" />
               </div>
             </div>
           </div>
