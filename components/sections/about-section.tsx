@@ -13,7 +13,8 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
-          {/* Left side - Story */}
+
+          {/* LEFT SIDE */}
           <div>
             <div
               className={`mb-6 transition-all duration-700 md:mb-12 ${
@@ -36,24 +37,26 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-              Monwhooper1776 - Stay Dangerous is a personal brand created by Kenneth Castenada, the maxim "Stay Dangerous" encapsulates the main philosophy of the brand.
+                Monwhooper1776 - Stay Dangerous is a personal brand created by Kenneth Castenada, the maxim "Stay Dangerous" encapsulates the main philosophy of the brand.
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-              If you are here then you are well aware that the core and central offer being put front and centre is electrolyzed reduced water provided by Kangen Water® Machines that are engineed by a company called Enagic® of which Kenneth is a Product Distributor for. 
+                If you are here then you are well aware that the core and central offer being put front and centre is electrolyzed reduced water provided by Kangen Water® Machines that are engineered by a company called Enagic® of which Kenneth is a Product Distributor for.
               </p>
             </div>
           </div>
 
-          {/* Right side - Stats with creative layout */}
+          {/* RIGHT SIDE STATS */}
           <div className="flex flex-col justify-center space-y-6 md:space-y-12">
             {[
               { value: "23+", label: "Countries", sublabel: "Enagic® has presence in", direction: "right" },
               { value: "51", label: "Years", sublabel: "Enagic® has been in Business", direction: "left" },
-              { value: "9", label: "Certifications", sublabel: "Enagic® has received forQuality Assurance", direction: "right" },
+              { value: "9", label: "Certifications", sublabel: "Enagic® has received for Quality Assurance", direction: "right" },
             ].map((stat, i) => {
               const getRevealClass = () => {
                 if (!isVisible) {
-                  return stat.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
+                  return stat.direction === "left"
+                    ? "-translate-x-16 opacity-0"
+                    : "translate-x-16 opacity-0"
                 }
                 return "translate-x-0 opacity-100"
               }
@@ -68,10 +71,16 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
                     maxWidth: i % 2 === 0 ? "100%" : "85%",
                   }}
                 >
-                  <div className="text-3xl font-light text-foreground md:text-6xl lg:text-7xl">{stat.value}</div>
+                  <div className="text-3xl font-light text-foreground md:text-6xl lg:text-7xl">
+                    {stat.value}
+                  </div>
                   <div>
-                    <div className="font-sans text-base font-light text-foreground md:text-xl">{stat.label}</div>
-                    <div className="font-mono text-xs text-foreground/60">{stat.sublabel}</div>
+                    <div className="font-sans text-base font-light text-foreground md:text-xl">
+                      {stat.label}
+                    </div>
+                    <div className="font-mono text-xs text-foreground/60">
+                      {stat.sublabel}
+                    </div>
                   </div>
                 </div>
               )
@@ -79,6 +88,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           </div>
         </div>
 
+        {/* CTA ROW — VIEW OUR WORK REMOVED */}
         <div
           className={`mt-8 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
@@ -88,10 +98,8 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(4)}>
             Start a Project
           </MagneticButton>
-          <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(1)}>
-            View Our Work
-          </MagneticButton>
         </div>
+
       </div>
     </section>
   )
