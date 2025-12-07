@@ -48,8 +48,8 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           <div className="flex flex-col justify-center space-y-6 md:space-y-12">
             {[
               { value: "23+", label: "Countries", sublabel: "Enagic® has presence in", direction: "right" },
-              { value: "51", label: "Years", sublabel: "in Business", direction: "left" },
-              { value: "9", label: "Certifications", sublabel: "Quality Assurance", direction: "right" },
+              { value: "51", label: "Years", sublabel: "Enagic® has been in Business", direction: "left" },
+              { value: "9", label: "Certifications", sublabel: "Enagic® has received forQuality Assurance", direction: "right" },
             ].map((stat, i) => {
               const getRevealClass = () => {
                 if (!isVisible) {
