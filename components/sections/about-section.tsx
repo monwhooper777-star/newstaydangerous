@@ -13,7 +13,6 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
-
           {/* LEFT SIDE */}
           <div>
             <div
@@ -88,7 +87,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           </div>
         </div>
 
-        {/* CTA ROW — FIXED TO SCROLL BACK TO DEMO SECTION */}
+        {/* CTA — slightly smaller Product Demo button */}
         <div
           className={`mt-8 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
@@ -96,14 +95,14 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           style={{ transitionDelay: "750ms" }}
         >
           <MagneticButton
-            size="lg"
+            size="md"  // ← changed from lg to md
             variant="primary"
-            onClick={() => scrollToSection?.(3)} // ← NOW CORRECT
+            onClick={() => scrollToSection?.(3)}
+            className="px-6 py-2 text-sm md:text-base" // ← tightened padding & font size
           >
             View Product Demo.
           </MagneticButton>
         </div>
-
       </div>
     </section>
   )
