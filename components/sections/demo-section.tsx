@@ -35,12 +35,29 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
           />
         </div>
 
-        {/* TRUST STRIP — vertical stack on mobile, horizontal strip on desktop */}
-        <div className="mt-8 w-full max-w-xl mx-auto">
+        {/* MOBILE ONLY — transparent Contact button */}
+        <div className="mt-8 md:hidden">
+          <MagneticButton
+            size="lg"
+            variant="secondary"
+            onClick={() => scrollToSection?.(5)} // Contact section index
+            className="
+              w-full rounded-full px-8 py-3
+              border border-foreground/20 bg-foreground/10
+              backdrop-blur-md text-sm text-foreground
+              hover:bg-foreground/20 transition
+            "
+          >
+            Contact
+          </MagneticButton>
+        </div>
+
+        {/* DESKTOP ONLY — Contact + ISO trust strip */}
+        <div className="mt-8 hidden md:block">
           <div
             className="
-              flex flex-col md:flex-row
-              overflow-hidden rounded-3xl border border-white/25
+              inline-flex w-full max-w-xl
+              overflow-hidden rounded-full border border-white/25
               bg-black/35 text-white/90 shadow-xl backdrop-blur-md
             "
           >
@@ -50,23 +67,16 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
               variant="ghost"
               onClick={() => scrollToSection?.(5)}
               className="
-                flex-shrink-0 rounded-none px-8 py-4
-                text-sm md:text-base font-medium
+                rounded-none px-10 py-4 text-sm md:text-base font-medium
                 bg-white/5 hover:bg-white/10
-                border-b border-white/25 md:border-b-0 md:border-r
+                border-r border-white/25
               "
             >
               Contact
             </MagneticButton>
 
             {/* ISO 9001 */}
-            <div
-              className="
-                flex flex-1 flex-col justify-center
-                px-6 py-4 text-xs
-                border-t border-white/25 md:border-t-0 md:border-r
-              "
-            >
+            <div className="flex flex-col justify-center px-8 py-3 border-r border-white/25 text-xs">
               <span className="text-sm font-semibold">ISO 9001</span>
               <span className="mt-1 text-[10px] leading-tight text-white/70">
                 Quality Management System
@@ -74,13 +84,7 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
             </div>
 
             {/* ISO 14001 */}
-            <div
-              className="
-                flex flex-1 flex-col justify-center
-                px-6 py-4 text-xs
-                border-t border-white/25 md:border-t-0 md:border-r
-              "
-            >
+            <div className="flex flex-col justify-center px-8 py-3 border-r border-white/25 text-xs">
               <span className="text-sm font-semibold">ISO 14001</span>
               <span className="mt-1 text-[10px] leading-tight text-white/70">
                 Environmental Management System
@@ -88,13 +92,7 @@ export function DemoSection({ scrollToSection }: DemoSectionProps) {
             </div>
 
             {/* ISO 13485 */}
-            <div
-              className="
-                flex flex-1 flex-col justify-center
-                px-6 py-4 text-xs
-                border-t border-white/25 md:border-t-0
-              "
-            >
+            <div className="flex flex-col justify-center px-8 py-3 text-xs">
               <span className="text-sm font-semibold">ISO 13485</span>
               <span className="mt-1 text-[10px] leading-tight text-white/70">
                 Medical Device Quality Management
