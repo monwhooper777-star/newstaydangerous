@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { useRef, useEffect, useState } from "react"
 
 import { Shader, ChromaFlow, Swirl } from "shaders/react"
 import { CustomCursor } from "@/components/custom-cursor"
@@ -10,18 +11,17 @@ import { ServicesSection } from "@/components/sections/services-section"
 import { AboutSection } from "@/components/sections/about-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MagneticButton } from "@/components/magnetic-button"
-import { useRef, useEffect, useState } from "react"
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [isDemoOpen, setIsDemoOpen] = useState(false)
   const touchStartY = useRef(0)
   const touchStartX = useRef(0)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
   const scrollThrottleRef = useRef<number>()
 
+  // Wait for shader canvas to be ready
   useEffect(() => {
     const checkShaderReady = () => {
       if (shaderContainerRef.current) {
@@ -63,6 +63,7 @@ export default function Home() {
     }
   }
 
+  // Touch scroll (vertical swipes -> horizontal scroll)
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY.current = e.touches[0].clientY
@@ -106,6 +107,7 @@ export default function Home() {
     }
   }, [currentSection])
 
+  // Mouse wheel scroll (vertical -> horizontal)
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
@@ -138,6 +140,7 @@ export default function Home() {
     }
   }, [currentSection])
 
+  // Sync currentSection with scrollLeft
   useEffect(() => {
     const handleScroll = () => {
       if (scrollThrottleRef.current) return
@@ -180,6 +183,7 @@ export default function Home() {
       <CustomCursor />
       <GrainOverlay />
 
+      {/* Shader background */}
       <div
         ref={shaderContainerRef}
         className={`fixed inset-0 z-0 transition-opacity duration-700 ${
@@ -190,8 +194,8 @@ export default function Home() {
         <Shader className="h-full w-full">
           {/* RED / BLACK SWIRL BASE */}
           <Swirl
-            colorA="#000000" // deep black
-            colorB="#8b0000" // dark blood red
+            colorA="#000000"
+            colorB="#8b0000"
             speed={0.65}
             detail={0.9}
             blend={55}
@@ -205,12 +209,12 @@ export default function Home() {
 
           {/* CHROMA FLOW FOR WHITE FLASHES + RED MOVEMENT */}
           <ChromaFlow
-            baseColor="#0a0a0a" // base black
-            upColor="#ffffff" // white highlight flickers
-            downColor="#8b0000" // red drag
-            leftColor="#ff1a1a" // bright red accents
+            baseColor="#0a0a0a"
+            upColor="#ffffff"
+            downColor="#8b0000"
+            leftColor="#ff1a1a"
             rightColor="#ff1a1a"
-            intensity={1.1} // punchy
+            intensity={1.1}
             radius={2.0}
             momentum={32}
             maskType="alpha"
@@ -218,10 +222,10 @@ export default function Home() {
           />
         </Shader>
 
-        {/* Optional overlay tint */}
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
+      {/* NAVBAR */}
       <nav
         className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 transition-opacity duration-700 md:px-12 md:py-6 ${
           isLoaded ? "opacity-100" : "opacity-0"
@@ -231,7 +235,6 @@ export default function Home() {
           onClick={() => scrollToSection(0)}
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
-          {/* Wolf logo in nav */}
           <div className="h-9 w-9 overflow-hidden rounded-lg transition-all duration-300 hover:scale-110 md:h-10 md:w-10">
             <Image
               src="/MWSDlogo.png"
@@ -272,10 +275,11 @@ export default function Home() {
           onClick={() => scrollToSection(4)}
           className="px-4 py-1 text-xs md:px-6 md:py-2 md:text-sm"
         >
-          Product Demo.
+          Get Started
         </MagneticButton>
       </nav>
 
+      {/* HORIZONTAL SCROLL CONTAINER */}
       <div
         ref={scrollContainerRef}
         data-scroll-container
@@ -284,12 +288,11 @@ export default function Home() {
         }`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        {/* Hero Section */}
+        {/* HERO SECTION */}
         <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-4 pb-14 pt-24 md:px-12 md:pb-24">
           <div className="max-w-3xl">
-            {/* JAPANESE TYPE + PILL */}
+            {/* Japanese type + pill */}
             <div className="mb-3 flex flex-col items-start gap-1 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              {/* Japanese text above pill */}
               <Image
                 src="/japtype.png"
                 alt="Electrolyzed Water - Japanese"
@@ -299,7 +302,6 @@ export default function Home() {
                 className="object-contain opacity-95 md:w-[110px]"
               />
 
-              {/* Original pill */}
               <div className="inline-block rounded-full border border-foreground/20 bg-foreground/15 px-3 py-1 backdrop-blur-md">
                 <p className="font-mono text-[10px] text-foreground/90 md:text-xs">
                   Electrolyzed Water Technology
@@ -307,16 +309,16 @@ export default function Home() {
               </div>
             </div>
 
-            {/* HERO TITLE – Dx Gotha */}
+            {/* HERO TITLE */}
             <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-dxgotha text-4xl font-light leading-tight tracking-tight text-foreground duration-1000 sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1] lg:text-8xl">
               <span className="text-balance">Stay Dangerous</span>
             </h1>
 
-            {/* HERO SUBCOPY */}
+            {/* SUBCOPY */}
             <p className="mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/90 duration-1000 delay-200 md:mb-8 md:text-xl">
               <span className="text-pretty">
-                Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the
-                body, fortifies the mind, and amplifies human potential.
+                Hydration engineered for resilience, clarity, and dangerous longevity. Water that sharpens the body,
+                fortifies the mind, and amplifies human potential.
               </span>
             </p>
 
@@ -325,7 +327,7 @@ export default function Home() {
                 size="lg"
                 variant="secondary"
                 className="w-full text-sm sm:w-auto md:text-base"
-                onClick={() => setIsDemoOpen(true)}
+                onClick={() => scrollToSection(2)}
               >
                 View Demo
               </MagneticButton>
@@ -342,47 +344,14 @@ export default function Home() {
           </div>
         </section>
 
+        {/* OTHER SECTIONS */}
         <WorkSection />
         <ServicesSection />
         <AboutSection scrollToSection={scrollToSection} />
         <ContactSection />
       </div>
 
-      {/* DEMO POPUP */}
-      {isDemoOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-background/95 p-6 shadow-2xl">
-            <button
-              onClick={() => setIsDemoOpen(false)}
-              className="absolute right-4 top-4 text-xs font-medium uppercase tracking-wide text-foreground/60 hover:text-foreground"
-            >
-              Close
-            </button>
-
-            <h2 className="mb-3 text-lg font-semibold tracking-tight text-foreground md:text-2xl">
-              MWSD Product Demo
-            </h2>
-
-            <p className="mb-4 text-sm leading-relaxed text-foreground/80 md:text-base">
-              This is where you can showcase the core experience: a walkthrough of the hydration protocol,
-              device setup, or any cinematic sequence that communicates what &quot;Stay Dangerous&quot; feels like in
-              practice.
-            </p>
-
-            <div className="aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/60">
-              {/* Replace this with your actual embed */}
-              {/* Example:
-              <iframe
-                src="https://www.youtube.com/embed/your_video_id"
-                className="h-full w-full"
-                allowFullScreen
-              />
-              */}
-            </div>
-          </div>
-        </div>
-      )}
-
+      {/* Hide scrollbars globally for divs */}
       <style jsx global>{`
         div::-webkit-scrollbar {
           display: none;
