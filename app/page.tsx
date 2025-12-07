@@ -360,7 +360,7 @@ export default function Home() {
         {/* OTHER SECTIONS */}
         <WorkSection />
         <ServicesSection />
-        <DemoSection />
+        <DemoSection scrollToSection={scrollToSection} />
         <AboutSection scrollToSection={scrollToSection} />
         <ContactSection />
       </div>

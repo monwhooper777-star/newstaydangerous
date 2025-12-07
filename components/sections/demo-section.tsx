@@ -1,8 +1,12 @@
 "use client";
 
-import Link from "next/link";
+import { MagneticButton } from "@/components/magnetic-button";
 
-export function DemoSection() {
+type DemoSectionProps = {
+  scrollToSection?: (index: number) => void;
+};
+
+export function DemoSection({ scrollToSection }: DemoSectionProps) {
   return (
     <section
       id="demo"
@@ -21,7 +25,7 @@ export function DemoSection() {
           fundamentals clearly.
         </p>
 
-        {/* VIDEO — full width on mobile, visible in its own screen */}
+        {/* VIDEO */}
         <div className="mt-8 w-full max-w-xl aspect-video rounded-xl overflow-hidden shadow-2xl">
           <iframe
             className="w-full h-full"
@@ -31,24 +35,20 @@ export function DemoSection() {
           />
         </div>
 
-        {/* CTA BUTTON — matches top-right button style, text = 'Contact' */}
-        <Link
-          href="/contact"
+        {/* CTA BUTTON — behaves like clicking the Contact nav item */}
+        <MagneticButton
+          size="lg"
+          variant="secondary"
+          onClick={() => scrollToSection?.(5)} // 5 = Contact section index
           className="
-            mt-8 inline-flex items-center justify-center
-            px-8 py-3
-            rounded-full
-            border border-foreground/20
-            bg-foreground/10
-            backdrop-blur-md
-            text-sm md:text-base text-foreground
-            font-medium
-            hover:bg-foreground/20
-            transition
+            mt-8 px-8 py-3 rounded-full
+            border border-foreground/20 bg-foreground/10
+            backdrop-blur-md text-sm md:text-base text-foreground
+            hover:bg-foreground/20 transition
           "
         >
           Contact
-        </Link>
+        </MagneticButton>
       </div>
     </section>
   );
