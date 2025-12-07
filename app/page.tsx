@@ -271,7 +271,7 @@ export default function Home() {
           onClick={() => scrollToSection(4)}
           className="px-4 py-1 text-xs md:px-6 md:py-2 md:text-sm"
         >
-          Get Started
+          Product Demo.
         </MagneticButton>
       </nav>
 
