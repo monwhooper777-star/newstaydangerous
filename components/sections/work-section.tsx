@@ -11,6 +11,7 @@ export function WorkSection() {
       className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-20 md:px-12 md:pt-0 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
+        {/* Header */}
         <div
           className={`mb-12 transition-all duration-700 md:mb-16 ${
             isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
@@ -22,13 +23,14 @@ export function WorkSection() {
           <p className="font-mono text-sm text-foreground/60 md:text-base">/ Uses & Benefits</p>
         </div>
 
+        {/* Feature List */}
         <div className="space-y-6 md:space-y-8">
           {[
             {
               number: "01",
               title: "Supersaturated with Molecular Hydrogen (H₂)",
               category:
-                "H₂-enriched water – redox biology & gasotransmitter literature (H₂ studies 2007–2022).",
+                "H₂-enriched water — redox biology & gasotransmitter literature (H₂ studies 2007–2022).",
               year: "2024",
               direction: "left",
             },
@@ -36,17 +38,9 @@ export function WorkSection() {
               number: "02",
               title: "Partially Depleted of Deuterium",
               category:
-                "Low-deuterium drinking water – metabolic and DDW reports (deuterium-depletion studies 1990–2022).",
+                "Low-deuterium drinking water — metabolic & DDW reports (deuterium-depletion studies 1990–2022).",
               year: "2024",
               direction: "right",
-            },
-            {
-              number: "03",
-              title: "100+ Uses of Electrolyzed Water",
-              category:
-                "Hypochlorous acid (HOCl) & sodium hydroxide (NaOH) applications – cleaning, sanitising, & surface care (electrolyzed-water use cases 2000–2023).",
-              year: "2023",
-              direction: "left",
             },
           ].map((project, i) => (
             <ProjectCard key={i} project={project} index={i} isVisible={isVisible} />
@@ -68,9 +62,11 @@ function ProjectCard({
 }) {
   const getRevealClass = () => {
     if (!isVisible) {
-      return project.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
+      return project.direction === "left"
+        ? "-translate-x-16 opacity-0"
+        : "translate-x-16 opacity-0"
     }
-  return "translate-x-0 opacity-100"
+    return "translate-x-0 opacity-100"
   }
 
   return (
@@ -86,6 +82,7 @@ function ProjectCard({
         <span className="font-mono text-sm text-foreground/30 transition-colors group-hover:text-foreground/50 md:text-base">
           {project.number}
         </span>
+
         <div>
           <h3 className="mb-1 font-sans text-2xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-3xl lg:text-4xl">
             {project.title}
@@ -93,6 +90,7 @@ function ProjectCard({
           <p className="font-mono text-xs text-foreground/50 md:text-sm">{project.category}</p>
         </div>
       </div>
+
       <span className="font-mono text-xs text-foreground/30 md:text-sm">{project.year}</span>
     </div>
   )
