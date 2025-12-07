@@ -88,14 +88,18 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           </div>
         </div>
 
-        {/* CTA ROW — VIEW OUR WORK REMOVED */}
+        {/* CTA ROW — FIXED TO SCROLL BACK TO DEMO SECTION */}
         <div
           className={`mt-8 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}
           style={{ transitionDelay: "750ms" }}
         >
-          <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(4)}>
+          <MagneticButton
+            size="lg"
+            variant="primary"
+            onClick={() => scrollToSection?.(3)} // ← NOW CORRECT
+          >
             View Product Demo.
           </MagneticButton>
         </div>
